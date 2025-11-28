@@ -1,0 +1,52 @@
+Got it — let’s walk through how you can capture and analyze a TLS handshake in Wireshark in a clear, step-by-step way. I’ll keep it practical so you can follow along without getting lost.
+
+1. Prepare Wireshark for Capture
+
+Open Wireshark and select the network interface you use for internet access (e.g., Wi-Fi or Ethernet).
+In the Capture Filter field, you can limit traffic to TLS/SSL by using:tcp port 443
+
+This ensures you only capture HTTPS traffic.
+
+
+2. Initiate a TLS Handshake
+
+Open a browser and visit any HTTPS website (preferably one you haven’t visited recently to avoid cached sessions).
+This will trigger a fresh TLS handshake between your client and the server.
+
+
+3. Stop the Capture
+
+Once the page loads, stop the capture in Wireshark to avoid unnecessary data clutter.
+
+
+4. Filter for TLS Handshake Packets
+
+In the Display Filter bar, type:tls.handshake
+
+This will show only handshake-related packets.
+
+
+5. Analyze the TLS Handshake Steps
+Typical sequence you’ll see:
+
+Client Hello – Client proposes TLS version, cipher suites, and extensions.
+Server Hello – Server selects TLS version, cipher suite, and sends its certificate.
+Certificate – Server’s public key and identity details.
+Server Key Exchange (if needed) – Parameters for key agreement.
+Client Key Exchange – Client sends key material (encrypted).
+Change Cipher Spec – Both sides signal they’re switching to encrypted communication.
+Finished – Both confirm handshake completion.
+
+
+6. Inspect Details
+
+Click on a Client Hello packet → expand Transport Layer Security → Handshake Protocol to see:
+
+Supported cipher suites
+TLS extensions (e.g., SNI, ALPN)
+
+
+Click on Server Hello to see the chosen cipher suite and TLS version.
+Check the Certificate packet to view the server’s certificate chain.
+
+
