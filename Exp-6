@@ -1,0 +1,43 @@
+The ssh command is used to securely connect to remote servers and manage them as if they were local. Below is a guide on how to use SSH to connect to the server slk@media.
+
+Basic Syntax
+
+ssh [username]@[hostname or IP address]
+Copy
+For your case:
+
+ssh slk@media
+Copy
+Steps to Connect
+
+Ensure Prerequisites: The remote server (media) must be powered on and accessible over the network. You need the correct username (slk) and permissions for access. Port 22 (default SSH port) should be open on the server.
+
+Run the Command: Open a terminal and execute: ssh slk@media If prompted, enter the password for the slk user.
+
+Verify Connection: Once connected, you will see the shell prompt of the remote server. Commands executed here will run on media.
+
+Optional Enhancements
+
+Use SSH Keys for Passwordless Login: Generate an SSH key pair and copy the public key to the remote server:
+
+ssh-keygen
+ssh-copy-id slk@media
+Copy
+Debugging Connection Issues: Use verbose mode to troubleshoot:
+
+ssh -v slk@media
+Copy
+Specify a Custom Port (if not using default port 22):
+
+ssh -p [port_number] slk@media
+Copy
+Best Practices
+
+Avoid using root for SSH connections; use a regular user like slk.
+
+Use strong passwords or SSH keys for enhanced security.
+
+Regularly update your SSH client and server for security patches.
+
+This setup ensures secure and efficient remote management of your server.
+Nov 19, 2025 · SSH (Secure Shell) is a secure communication protocol that 

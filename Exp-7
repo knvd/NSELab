@@ -1,0 +1,10 @@
+To analyze WPA2 wireless security and capture a handshake, follow these steps:
+Set up your wireless interface to monitor mode using airmon-ng start wlan0 to listen to all Wi-Fi traffic.
+Identify the target network by scanning for nearby access points with airdump-ng wlan0mon and capturing the handshake.
+Capture the handshake using airdump-ng -c [channel] --bssid [target BSSID] -w [file] wlan0mon.
+Verify the capture by checking the presence of the 4-way handshake in the captured file.
+Perform dictionary attacks on the captured handshake to crack the password, using tools like aircrack-ng or hashcat.
+Consider hardening your network by migrating to WPA3, adopting WPA2/WPA3-Enterprise for organizations, disabling WPS, and requiring AES/CCMP encryption. 
+1
+
+Always ensure that you are authorized to perform network penetration testing and that you are using ethical hacking tools and methods. Unauthorized access to networks is illegal and punishable by law

@@ -1,0 +1,47 @@
+To send PGP encrypted emails in Thunderbird, set up OpenPGP, generate your key pair, import the recipient's public key, and then compose and encrypt your message before sending.
+Step-by-Step Instructions
+Set Up Thunderbird:
+Ensure you have Thunderbird version 78 or higher, as it includes built-in support for OpenPGP encryption. If you haven't installed it yet, download it from the official Thunderbird website. 
+2
+
+
+2 Sources
+Create Your OpenPGP Key Pair:
+Open Thunderbird and go to Account Settings by clicking the menu button (three horizontal lines) and selecting Account Settings.
+Click on End-to-End Encryption in the left pane, then click Add Key.
+Choose Create a new OpenPGP Key and follow the prompts to generate your key pair. You can set an expiration date for better key hygiene. 
+2
+
+
+2 Sources
+Import the Recipient's Public Key:
+Obtain the public key of the recipient you wish to send an encrypted email to. This key must be imported into Thunderbird.
+In the End-to-End Encryption settings, click on OpenPGP Manager, then select File > Import Public Keys from File to import the recipient's public key. 
+2
+
+
+2 Sources
+Compose Your Email:
+Start a new email by clicking Write in Thunderbird.
+In the compose window, enter the recipient's email address (whose public key you imported) and write your message.
+Encrypt the Email:
+Before sending, look for the OpenPGP drop-down menu in the compose window. Select Encrypt to encrypt your email. You can also click the Encrypt button at the bottom right of the compose window. 
+2
+If the recipient has the matching private key, they will be able to decrypt and read your email. 
+2
+
+
+4 Sources
+Send the Email:
+Once you have encrypted the email, click Send. The email will be sent securely, ensuring that only the intended recipient can read it. 
+2
+
+
+2 Sources
+Additional Notes
+Understanding Keys: Your public key is shared with others to allow them to send you encrypted messages, while your private key is kept secret and used to decrypt messages sent to you. 
+1
+Digital Signatures: You can also digitally sign your emails to verify your identity to the recipient, ensuring the message hasn't been altered in transit. 
+2
+
+By following these steps, you can effectively send PGP encrypted emails using Thunderbird, enhancing the security of your communications.

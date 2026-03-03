@@ -1,0 +1,58 @@
+An IPSec tunnel securely connects two networks over the internet by encrypting traffic between endpoints. Below is a step-by-step guide for configuring a site-to-site IPSec tunnel using IKEv1 on Cisco routers, which can be adapted for other platforms.
+
+1. Define IKE Phase 1 Policy
+
+This phase establishes a secure channel for negotiating IPSec parameters.
+
+crypto isakmp policy 10
+encryption aes
+hash sha256
+authentication pre-share
+group 14
+Copy
+Set the pre-shared key and peer IP:
+
+crypto isakmp key vpnuser address <peer_public_ip>
+Copy
+2. Configure IPSec Phase 2 Policy
+
+This phase negotiates encryption for actual data traffic.
+
+crypto ipsec transform-set myset esp-aes esp-sha256-hmac
+Copy
+3. Define Interesting Traffic with ACL
+
+Only matching traffic will be encrypted.
+
+access-list 100 permit ip 10.1.1.0 0.0.0.255 172.16.2.0 0.0.0.255
+Copy
+4. Create and Apply Crypto Map
+
+Bind the IPSec settings to an interface.
+
+crypto map mymap 10 ipsec-isakmp
+set peer <peer_public_ip>
+set transform-set myset
+match address 100
+
+interface GigabitEthernet0/0
+ip address <local_public_ip> <subnet_mask>
+crypto map mymap
+Copy
+1
+
+5. Add Routing
+
+Ensure traffic to the remote network routes through the tunnel.
+
+ip route 172.16.2.0 255.255.255.0 <next_hop>
+Copy
+1
+
+6. Verification
+
+Check tunnel status:
+
+show crypto isakmp sa # IKE Phase 1 status
+show crypto ipsec sa # IPSec Phase 2 status
+show crypto map # Crypto map details
